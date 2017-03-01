@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HWController {
 
-    @GetMapping(path = "Hello")
+    @GetMapping
     public String showHW(){
         return "Hello World!";
     }
