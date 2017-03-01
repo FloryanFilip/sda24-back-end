@@ -51,6 +51,7 @@
                 <version>2.3</version>
                 <executions>
                     <execution>
+                        <id>default-war</id>
                         <phase>package</phase>
                         <goals><goal>copy</goal></goals>
                         <configuration>
