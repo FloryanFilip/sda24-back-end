@@ -7,5 +7,5 @@ import javax.validation.constraints.NotNull;
  */
 public class Query {
     @NotNull
-    private String queryAsk;
+    private String ask;
 }
