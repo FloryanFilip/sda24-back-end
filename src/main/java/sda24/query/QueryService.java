@@ -29,9 +29,5 @@ public class QueryService {
         return queryDao.findAll();
     }
     
-
-    //zapisuje query(string) void//,
-    //pobranie wszystkich query,
-     pobranie wynikow dla danego query,
-     zapisze wyniki dla query
+    
 }
