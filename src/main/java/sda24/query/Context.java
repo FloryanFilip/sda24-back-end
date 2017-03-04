@@ -18,7 +18,7 @@ public class Context {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "context")
+    @Column(name = "context",length = 10000)
     private String context;
 
     @JoinColumn(name = "query_id")
