@@ -8,11 +8,12 @@ import java.util.List;
 @Component
 public class SearchEngine {
 
-    public List<String> getUrls(String query, int count) throws IOException {
+    public List<String> getLinks(String query, int count) throws IOException {
         try {
             return new GoogleSearchByApi().getLinks(query, count);
         } catch (IOException e) {
             return new GoogleSearchByWeb().getLinks(query, count);
         }
     }
+
 }
