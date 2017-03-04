@@ -1,13 +1,18 @@
 package sda24.search;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-/**
- * Created by RENT on 2017-03-04.
- */
-public interface SearchEngine {
+@Component
+public class SearchEngine {
 
-    List<String> getLinks(String topic, int linkNumbers) throws IOException;
+    public List<String> getUrls(String query, int count) throws IOException {
+        try {
+            return new GoogleSearchByApi().getLinks(query, count);
+        } catch (IOException e) {
+            return new GoogleSearchByWeb().getLinks(query, count);
+        }
+    }
 }

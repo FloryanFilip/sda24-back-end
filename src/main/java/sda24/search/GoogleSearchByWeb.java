@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GoogleSearchByStackOverflow implements SearchEngine{
+public class GoogleSearchByWeb implements SearchProvider {
 
     private final String google = "http://www.google.com/search?num=";
     private final String charset = "UTF-8";

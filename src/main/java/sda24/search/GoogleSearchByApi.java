@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class GoogleSearchByCustomSearch implements SearchEngine{
+public class GoogleSearchByApi implements SearchProvider {
     private final String cx="003221646697086159726:w78o7o_jhi8";
     private final String key = "AIzaSyBNzA4AOCk4yw8NZx8a1jKmSHyQgk9S1wU";
     private final String key2 = "AIzaSyD7xDz_ZjQzgCvl1ikMkS1yvetwLOrbrGU";
