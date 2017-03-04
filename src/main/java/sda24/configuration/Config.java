@@ -24,18 +24,15 @@ import java.util.concurrent.Executor;
 
 @Configuration
 @EnableWebMvc
-
 @EnableTransactionManagement
 @EnableJpaRepositories("sda24")
 @ComponentScan({"sda24"})
-
 @EnableAsync
-
 public class Config extends WebMvcConfigurerAdapter {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/*").allowedMethods("*").allowedOrigins("*");
+        registry.addMapping("/*").allowedMethods("*").allowedOrigins("*").allowedHeaders("*").allowCredentials(true);
     }
 
 }
