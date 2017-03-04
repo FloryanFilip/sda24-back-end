@@ -38,7 +38,8 @@ public class HibernateConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://ec2-54-217-222-254.eu-west-1.compute.amazonaws.com:5432/db5efi9qb92rk3?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
-        dataSource.setPassword("kyuhevyuyqsjcm");
+        dataSource.setUsername("kyuhevyuyqsjcm");
+        dataSource.setPassword("c897adadb8cbd640eb936b3b13b59aa5b1d815fe3219e2559b11cff0bf6cfe1c");
         dataSource.setSchema("public");
         return dataSource;
     }
