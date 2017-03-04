@@ -1,10 +1,10 @@
 package sda24.query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sda24.query.Query;
+import sda24.entity.Query;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import javax.validation.Valid;
 
 /**
  * Created by bolad on 3/3/17.
@@ -12,16 +12,20 @@ import java.io.IOException;
 
 @RestController
 public class QueryController {
+    private final QueryService queryService;
 
-    @GetMapping("query/{id}")
-    public Integer get(@PathVariable Integer id) {
-        System.out.println(id);
-        return id;
+    @Autowired
+    public QueryController(QueryService queryService){
+        this.queryService = queryService;
     }
 
-    @RequestMapping(path = "query", method = RequestMethod.POST)
-    public String post(@PathVariable Integer id, @RequestBody Query query)  {
-        
-        return null;
+    @GetMapping("query/{id}")
+    public Query get(@PathVariable Integer id) {
+        return queryService.getQueryById(id);
+    }
+
+    @PostMapping(path = "query")
+    public void post(@Valid Query query)  {
+        queryService.saveQuery(query);
     }
 }
