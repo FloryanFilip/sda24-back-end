@@ -45,7 +45,9 @@ public class QueryService {
     }
 
     public void startSearching(String query) throws IOException {
-        //save to DB
+        Query q1 = new Query();
+        q1.setQuery(query);
+        queryDao.save(q1);
         queryServiceAsync.checkURLs(query);
     }
 

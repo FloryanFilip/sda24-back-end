@@ -5,6 +5,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -36,7 +37,8 @@ public class QueryController {
     }
 
     @PostMapping(path = "queries")
-    public void post(@Valid QueryDto query)  {
+    public void post(@Valid @RequestBody QueryDto query) throws IOException {
+        queryService.startSearching(query.getQuery());
     }
 
     @PostMapping(path ="queies/context")

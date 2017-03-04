@@ -1,16 +1,12 @@
 package sda24.query;
 
-<<<<<<< HEAD
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.Size;
-=======
 import sda24.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> 29c56ae27320ed613f7719b92d678b1bb1fc6ce7
+
 
 /**
  * Created by RENT on 2017-03-03.
@@ -29,9 +25,9 @@ public class Query {
 
     @JoinColumn(name = "context_id", referencedColumnName = "id")
     @OneToOne
-    private Context context;
+    private Context context ;
 
-    @OneToMany(mappedBy = "queryRef")
+    @OneToMany(mappedBy = "queryRef", fetch = FetchType.EAGER)
     private List<User> userList = new ArrayList<User>();
 
 
