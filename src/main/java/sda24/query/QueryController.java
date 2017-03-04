@@ -1,10 +1,6 @@
 package sda24.query;
 
 import org.springframework.web.bind.annotation.*;
-import sda24.query.Query;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 /**
  * Created by bolad on 3/3/17.
@@ -20,8 +16,7 @@ public class QueryController {
     }
 
     @RequestMapping(path = "query", method = RequestMethod.POST)
-    public String post(@PathVariable Integer id, @RequestBody Query query)  {
-        
-        return null;
+    public Query post(@RequestBody Query query)  {
+        return query;
     }
 }
