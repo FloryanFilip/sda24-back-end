@@ -29,5 +29,5 @@ public class QueryService {
         return queryDao.findAll();
     }
     
-    
+
 }
