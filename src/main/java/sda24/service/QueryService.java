@@ -9,7 +9,7 @@ public class QueryService {
     private QueryServiceAsync queryServiceAsync;
 
     @Autowired
-    public QueryService(QueryService queryServiceAsync) {
+    public QueryService(QueryServiceAsync queryServiceAsync) {
         this.queryServiceAsync = queryServiceAsync;
     }
 

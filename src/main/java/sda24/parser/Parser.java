@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +22,7 @@ import java.util.regex.Pattern;
 /**
  * Created by RENT on 2017-03-03.
  */
-
+@Component
 public class Parser {
 
     private WebConnector webConnector;

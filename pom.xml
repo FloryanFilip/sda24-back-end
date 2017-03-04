@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
@@ -17,12 +18,26 @@
             <version>4.3.6.RELEASE</version>
         </dependency>
 
+    <!-- Spring dependencies -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>4.3.6.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>4.3.6.RELEASE</version>
+    </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>4.3.6.RELEASE</version>
         </dependency>
+
+
         <!-- Servlet dependencies -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -41,8 +56,16 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-      
-<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.24</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 <dependency>
     <groupId>org.jsoup</groupId>
     <artifactId>jsoup</artifactId>

@@ -22,7 +22,9 @@ public class QueryController {
 
     @PostMapping("/query")
     public Query post(@RequestBody Query query)  {
-       queryService.startSearching(query);
+       queryService.startSearching(query.getQuery());
         return query;
     }
+
+
 }

@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import sda24.HWController;
+import sda24.handler.ExceptionHandler;
+import sda24.parser.Parser;
+import sda24.parser.WebConnector;
 
 import java.util.concurrent.Executor;
 
@@ -18,7 +21,7 @@ import java.util.concurrent.Executor;
  */
 
 @Configuration
-@ComponentScan(basePackageClasses = HWController.class)
+@ComponentScan("sda")
 @EnableWebMvc
 @EnableAsync
 public class Config extends WebMvcConfigurerAdapter {

@@ -2,6 +2,7 @@ package sda24.search;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,5 +10,5 @@ import java.util.List;
  */
 @Component
 public class SearchEngine {
-    public List<String> getLinks(String topic, int linksNumbers){}
+    public List<String> getLinks(String topic, int linksNumbers){return Collections.emptyList();}
 }
