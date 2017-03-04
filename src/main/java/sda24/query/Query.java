@@ -1,5 +1,9 @@
 package sda24.query;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Size;
+
 /**
  * Created by bolad on 3/3/17.
  */
