@@ -22,6 +22,10 @@ public class QueryController {
         this.queryService = queryService;
     }
 
+    @GetMapping
+    public String helloWorld(){return "Hello World!";
+    }
+
     @GetMapping("query/all")
     public List<Query> getAll(){ return queryService.getAllQueries();}
 
