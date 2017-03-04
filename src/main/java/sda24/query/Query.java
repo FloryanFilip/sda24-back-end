@@ -28,9 +28,6 @@ public class Query {
     @OneToMany(mappedBy = "queryRef")
     private List<User> userList = new ArrayList<User>();
 
-//    @OneToMany
-//    private List<Context> results = new ArrayList<Context>();
-
 
     public List<User> getUserList() {
         return userList;
@@ -63,12 +60,5 @@ public class Query {
     public void setQuery(String query) {
         this.query = query;
     }
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+
 }

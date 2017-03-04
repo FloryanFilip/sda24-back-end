@@ -1,10 +1,13 @@
 package sda24.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import sda24.entity.Query;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by bolad on 3/3/17.
@@ -19,6 +22,9 @@ public class QueryController {
         this.queryService = queryService;
     }
 
+    @GetMapping("query/all")
+    public List<Query> getAll(){ return queryService.getAllQueries();}
+
     @GetMapping("query/{id}")
     public Query get(@PathVariable Integer id) {
         return queryService.getQueryById(id);
@@ -27,5 +33,13 @@ public class QueryController {
     @PostMapping(path = "query")
     public void post(@Valid Query query)  {
         queryService.saveQuery(query);
+    }
+
+    @PostMapping(path ="query/context")
+    public void postContext(@Valid Query query, @Valid Context context){queryService.saveResultsForQuery(query, context);}
+
+    @GetMapping(path = "query/{id}/context")
+    public Context getContext(@PathVariable Integer id){
+        return queryService.getResultsForQuery(id);
     }
 }

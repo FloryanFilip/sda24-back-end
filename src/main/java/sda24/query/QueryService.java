@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Service
 public class QueryService {
-    private  QueryDao queryDao;
+    private  final QueryDao queryDao;
 
     @Autowired
     public QueryService(QueryDao queryDao){
@@ -32,13 +32,13 @@ public class QueryService {
         return queryDao.findAll();
     }
 
-//    // Returns a list of  all results for a Query of given {Id}
-//    public List<Context> getResultsForQuery(Integer Id) {
-//        return queryDao.findOne(Id).getResults();
-//    }
+    // Returns a list of  all results for a Query of given {Id}
+    public Context getResultsForQuery(Integer Id) {
+        return queryDao.findOne(Id).getContext();
+    }
 
-//    public void saveResultsForQuery(Query query, Context context){
-//        queryDao.save(query).getResults().add(context);
-//    }
+    public void saveResultsForQuery(Query query, Context context){
+        queryDao.save(query).setContext(context);
+    }
 
 }
