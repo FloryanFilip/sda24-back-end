@@ -2,12 +2,13 @@ package sda24.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import sda24.parser.Parser;
 import sda24.search.SearchEngine;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by RENT on 2017-03-04.
@@ -16,19 +17,31 @@ import java.io.IOException;
 public class QueryServiceAsync {
 
     private static final int LINKS_NUMBERS = 20;
+    @Autowired
+    private ContextDao contextDao;
+
+    @Autowired
+    private QueryDao queryDao;
+
     private Parser parser;
     private SearchEngine searchEngine;
 
     @Autowired
-    public QueryServiceAsync(Parser parser, SearchEngine searchEngine){
-        this.parser=parser;
-        this.searchEngine=searchEngine;
+    public QueryServiceAsync(Parser parser, SearchEngine searchEngine) {
+        this.parser = parser;
+        this.searchEngine = searchEngine;
     }
 
-    @Async()
-    public void checkURLs(String query) throws IOException {
-        searchEngine.getLinks(query, LINKS_NUMBERS).forEach(e -> {
-            parser.findContext(e, query);
+    @Async
+    public void checkURLs(Query query) throws IOException {
+        Set<Context> contexts = new HashSet<>();
+        contextDao.save(new Context("test", null, query));
+        searchEngine.getLinks(query.getQuery(), LINKS_NUMBERS).forEach(e -> {
+            try {
+                parser.findContext(e, query.getQuery()).forEach(s -> contextDao.save(new Context(s, null, query)));
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         });
     }
 }

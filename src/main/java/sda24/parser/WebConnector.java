@@ -18,7 +18,7 @@ public class WebConnector {
     private final Logger LOGGER = Logger.getLogger(this.getClass().toString());
 
     public String getHTML(String url){
-        StringBuffer sb = null;
+        StringBuffer sb = new StringBuffer();
         try {
             URL html = new URL(url);
             URLConnection urlConnection = html.openConnection();
@@ -33,7 +33,6 @@ public class WebConnector {
             }
         } catch (IOException e) {
             LOGGER.info(getClass() + e.getMessage());
-            throw new RuntimeException();
         }
         return sb.toString();
     }

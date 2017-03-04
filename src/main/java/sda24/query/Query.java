@@ -5,7 +5,9 @@ import sda24.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -20,12 +22,11 @@ public class Query {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "query")
+    @Column(name = "query")
     private String query;
 
-    @JoinColumn(name = "context_id", referencedColumnName = "id")
-    @OneToOne
-    private Context context ;
+    @OneToMany(mappedBy = "contextRef", fetch = FetchType.EAGER)
+    private Set<Context> contexts = new HashSet<>();
 
     @OneToMany(mappedBy = "queryRef", fetch = FetchType.EAGER)
     private List<User> userList = new ArrayList<User>();
@@ -39,12 +40,12 @@ public class Query {
         this.userList = userList;
     }
 
-    public Context getContext() {
-        return context;
+    public Set<Context> getContexts() {
+        return contexts;
     }
 
-    public void setContext(Context context) {
-        this.context = context;
+    public void setContexts(Set<Context> contexts) {
+        this.contexts = contexts;
     }
 
     public int getId() {

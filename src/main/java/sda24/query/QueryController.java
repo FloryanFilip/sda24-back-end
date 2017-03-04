@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,7 +47,7 @@ public class QueryController {
     public void postContext(@Valid Query query, @Valid Context context){queryService.saveResultsForQuery(query, context);}
 
     @GetMapping(path = "query/{id}/context")
-    public Context getContext(@PathVariable Integer id){
+    public Collection<Context> getContext(@PathVariable Integer id){
         return queryService.getResultsForQuery(id);
     }
 

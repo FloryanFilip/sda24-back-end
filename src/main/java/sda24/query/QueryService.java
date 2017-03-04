@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,19 +38,19 @@ public class QueryService {
     }
 
     // Returns a list of  all results for a Query of given {Id}
-    public Context getResultsForQuery(Integer Id) {
-        return queryDao.findOne(Id).getContext();
+    public Collection<Context> getResultsForQuery(Integer Id) {
+        return queryDao.findOne(Id).getContexts();
     }
 
     public void saveResultsForQuery(Query query, Context context){
-        queryDao.save(query).setContext(context);
+        queryDao.save(query).getContexts().add(context);
     }
 
     public void startSearching(String query) throws IOException {
         Query q1 = new Query();
         q1.setQuery(query);
         queryDao.save(q1);
-        queryServiceAsync.checkURLs(query);
+        queryServiceAsync.checkURLs(q1);
     }
 
 }

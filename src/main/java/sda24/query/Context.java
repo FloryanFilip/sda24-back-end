@@ -19,16 +19,20 @@ public class Context {
     @Column(name = "context")
     private String context;
 
+    @JoinColumn(name = "query_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Query contextRef;
 
-    @OneToMany(mappedBy = "contextRef")
-    private List<URL> Allurls = new ArrayList<URL>();
+    @Column(name = "url")
+    private String url;
 
-    public List<URL> getAllurls() {
-        return Allurls;
+    public Context(String context, String url, Query q) {
+        this.context = context;
+        this.url = url;
+        this.contextRef = q;
     }
 
-    public void setAllurls(List<URL> allurls) {
-        Allurls = allurls;
+    public Context() {
     }
 
     public int getId() {
@@ -47,6 +51,19 @@ public class Context {
         this.context = context;
     }
 
+    public Query getContextRef() {
+        return contextRef;
+    }
 
+    public void setContextRef(Query contextRef) {
+        this.contextRef = contextRef;
+    }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
