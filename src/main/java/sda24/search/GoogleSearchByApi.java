@@ -10,18 +10,25 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 
+@Component
+@PropertySource("classpath:app.properties")
 public class GoogleSearchByApi implements SearchProvider {
-    private final String cx="003221646697086159726:w78o7o_jhi8";
-    private final String key = "AIzaSyBNzA4AOCk4yw8NZx8a1jKmSHyQgk9S1wU";
-    private final String key2 = "AIzaSyD7xDz_ZjQzgCvl1ikMkS1yvetwLOrbrGU";
-    private final String cx2 = "003221646697086159726:pponda5yolo";
-    //example link: GET https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=INSERT_YUR_CX&q=lectures
+
+    @Value("${google.key}")
+    private String key;
+
+    @Value("${google.cx}")
+    private String cx;
 
     private final String charset = "UTF-8";
-    private final String searchLink = "https://www.googleapis.com/customsearch/v1?key="+key2+"&cx="+cx2;
-    private int startPage=1;
+    private final String searchLink = "https://www.googleapis.com/customsearch/v1?key="+key+"&cx="+cx;
+    private int startPage = 1;
 
     private String readAll(Reader rd) throws IOException {
             StringBuilder sb = new StringBuilder();
