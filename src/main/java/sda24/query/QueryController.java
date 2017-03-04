@@ -1,6 +1,8 @@
 package sda24.query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sda24.service.QueryService;
 
 /**
  * Created by bolad on 3/3/17.
@@ -9,22 +11,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class QueryController {
 
-    //@Autowired QueryService
+    @Autowired
+    private QueryService queryService;
 
-    @GetMapping("query/{id}")
+    @GetMapping("/query/{id}")
     public Integer get(@PathVariable Integer id) {
         System.out.println(id);
         return id;
     }
 
-    @RequestMapping(path = "query", method = RequestMethod.POST)
-<<<<<<< HEAD
-    public String post(@PathVariable Integer id, @RequestBody Query query)  {
-       // queryService.startSearching();
-        return null;
-=======
+    @PostMapping("/query")
     public Query post(@RequestBody Query query)  {
+       queryService.startSearching(query);
         return query;
->>>>>>> b2171068daa779bb3ad81828513fb836c8a60d60
     }
 }
