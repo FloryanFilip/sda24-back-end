@@ -3,6 +3,7 @@ package sda24.query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -11,10 +12,12 @@ import java.util.List;
 @Service
 public class QueryService {
     private  final QueryDao queryDao;
+    private final QueryServiceAsync queryServiceAsync;
 
     @Autowired
-    public QueryService(QueryDao queryDao){
+    public QueryService(QueryDao queryDao, QueryServiceAsync queryServiceAsync){
         this.queryDao = queryDao;
+        this.queryServiceAsync = queryServiceAsync;
     }
 
     // Returns one query of given {queryId}
@@ -39,6 +42,11 @@ public class QueryService {
 
     public void saveResultsForQuery(Query query, Context context){
         queryDao.save(query).setContext(context);
+    }
+
+    public void startSearching(String query) throws IOException {
+        //save to DB
+        queryServiceAsync.checkURLs(query);
     }
 
 }

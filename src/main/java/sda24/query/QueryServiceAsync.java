@@ -1,4 +1,4 @@
-package sda24.service;
+package sda24.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -6,6 +6,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import sda24.parser.Parser;
 import sda24.search.SearchEngine;
+
+import java.io.IOException;
 
 /**
  * Created by RENT on 2017-03-04.
@@ -24,7 +26,7 @@ public class QueryServiceAsync {
     }
 
     @Async()
-    public void checkURLs(String query) {
+    public void checkURLs(String query) throws IOException {
         searchEngine.getLinks(query, LINKS_NUMBERS).forEach(e -> {
             parser.findContext(e, query);
         });

@@ -13,12 +13,12 @@ public class QueryValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Query.class.equals(aClass);
+        return QueryDto.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Query q = (Query) o;
+        QueryDto q = (QueryDto) o;
         if (!StringUtils.hasText(q.getQuery())) errors.reject("Query empty");
     }
 
