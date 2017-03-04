@@ -20,9 +20,6 @@ public class QueryServiceAsync {
     @Autowired
     private ContextDao contextDao;
 
-    @Autowired
-    private QueryDao queryDao;
-
     private Parser parser;
     private SearchEngine searchEngine;
 
@@ -34,8 +31,6 @@ public class QueryServiceAsync {
 
     @Async
     public void checkURLs(Query query) throws IOException {
-        Set<Context> contexts = new HashSet<>();
-        contextDao.save(new Context("test", null, query));
         searchEngine.getLinks(query.getQuery(), LINKS_NUMBERS).forEach(e -> {
             try {
                 parser.findContext(e, query.getQuery()).forEach(s -> contextDao.save(new Context(s, null, query)));

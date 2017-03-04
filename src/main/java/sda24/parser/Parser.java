@@ -34,7 +34,12 @@ public class Parser {
 
     public List<String> findContext(String url, String query) {
         List<String> contextList = new ArrayList<>();
-        String html = parseURL(url);
+        String html;
+        try{
+           html = parseURL(url);
+        } catch(ReadPageException e){
+            return new ArrayList<>();
+        }
         Pattern p = Pattern.compile("[A-Z](?i)[^.?!]*?\\b" + "(" + query + ")" + "\\b[^.?!]*[.?!]");
         Matcher m = p.matcher(html);
         while (m.find()) {

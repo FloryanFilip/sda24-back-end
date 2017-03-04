@@ -1,5 +1,7 @@
 package sda24.query;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,7 @@ public class Context {
         this.context = context;
     }
 
+    @JsonIgnore
     public Query getContextRef() {
         return contextRef;
     }

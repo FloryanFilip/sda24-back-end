@@ -33,6 +33,7 @@ public class WebConnector {
             }
         } catch (IOException e) {
             LOGGER.info(getClass() + e.getMessage());
+            throw new ReadPageException();
         }
         return sb.toString();
     }
