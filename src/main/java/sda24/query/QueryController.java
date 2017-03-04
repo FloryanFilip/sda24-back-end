@@ -18,8 +18,13 @@ public class QueryController {
     }
 
     @RequestMapping(path = "query", method = RequestMethod.POST)
+<<<<<<< HEAD
     public String post(@PathVariable Integer id, @RequestBody Query query)  {
        // queryService.startSearching();
         return null;
+=======
+    public Query post(@RequestBody Query query)  {
+        return query;
+>>>>>>> b2171068daa779bb3ad81828513fb836c8a60d60
     }
 }
