@@ -1,4 +1,6 @@
-package sda24.entity;
+package sda24.query;
+
+import sda24.query.Context;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,8 +21,11 @@ public class URL {
     @Column(name = "url")
     private String url;
 
-    @OneToMany
-    private List<Context> contextList = new ArrayList<Context>();
+    @JoinColumn(name = "context_id", referencedColumnName = "id")
+    @ManyToOne
+    private Context contextRef;
+
+
 
     public int getId() {
         return id;
@@ -38,11 +43,11 @@ public class URL {
         this.url = url;
     }
 
-    public List<Context> getContextList() {
-        return contextList;
+    public Context getContextRef() {
+        return contextRef;
     }
 
-    public void setContextList(List<Context> contextList) {
-        this.contextList = contextList;
+    public void setContextRef(Context contextRef) {
+        this.contextRef = contextRef;
     }
 }

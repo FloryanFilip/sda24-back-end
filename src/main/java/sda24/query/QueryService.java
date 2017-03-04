@@ -2,8 +2,6 @@ package sda24.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sda24.entity.Context;
-import sda24.entity.Query;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ import java.util.List;
  */
 @Service
 public class QueryService {
-    private final QueryDao queryDao;
+    private  QueryDao queryDao;
 
     @Autowired
     public QueryService(QueryDao queryDao){
@@ -34,13 +32,13 @@ public class QueryService {
         return queryDao.findAll();
     }
 
-    // Returns a list of  all results for a Query of given {Id}
-    public List<Context> getResultsForQuery(Integer Id) {
-        return queryDao.findOne(Id).getResults();
-    }
+//    // Returns a list of  all results for a Query of given {Id}
+//    public List<Context> getResultsForQuery(Integer Id) {
+//        return queryDao.findOne(Id).getResults();
+//    }
 
-    public void saveResultsForQuery(Query query, Context context){
-        queryDao.save(query).getResults().add(context);
-    }
+//    public void saveResultsForQuery(Query query, Context context){
+//        queryDao.save(query).getResults().add(context);
+//    }
 
 }

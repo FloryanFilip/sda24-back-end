@@ -1,4 +1,6 @@
-package sda24.entity;
+package sda24.user;
+
+import sda24.query.Query;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,8 +24,17 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany
-    private List<Query> queries = new ArrayList<Query>();
+    @JoinColumn(name = "query_id", referencedColumnName = "id")
+    @ManyToOne
+    private Query queryRef;
+
+    public Query getQueryRef() {
+        return queryRef;
+    }
+
+    public void setQueryRef(Query queryRef) {
+        this.queryRef = queryRef;
+    }
 
     public int getId() {
         return id;
@@ -47,13 +58,5 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public List<Query> getQueries() {
-        return queries;
-    }
-
-    public void setQueries(List<Query> queries) {
-        this.queries = queries;
     }
 }

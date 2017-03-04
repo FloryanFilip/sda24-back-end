@@ -1,6 +1,8 @@
-package sda24.entity;
+package sda24.query;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by RENT on 2017-03-03.
@@ -17,13 +19,17 @@ public class Context {
     @Column(name = "context")
     private String context;
 
-    @JoinColumn(name = "query_id", referencedColumnName = "id")
-    @OneToOne
-    private Query query;
 
-    @JoinColumn(name = "url_id", referencedColumnName = "id")
-    @ManyToOne
-    private URL url;
+    @OneToMany(mappedBy = "contextRef")
+    private List<URL> Allurls = new ArrayList<URL>();
+
+    public List<URL> getAllurls() {
+        return Allurls;
+    }
+
+    public void setAllurls(List<URL> allurls) {
+        Allurls = allurls;
+    }
 
     public int getId() {
         return id;
@@ -41,19 +47,6 @@ public class Context {
         this.context = context;
     }
 
-    public Query getQuery() {
-        return query;
-    }
 
-    public void setQuery(Query query) {
-        this.query = query;
-    }
 
-    public URL getUrl() {
-        return url;
-    }
-
-    public void setUrl(URL url) {
-        this.url = url;
-    }
 }
